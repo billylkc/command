@@ -30,7 +30,7 @@ var wikiCmd = &cobra.Command{
 			return err
 		}
 
-		fmt.Printf("%s\n\n", result.Title)
+		fmt.Printf("%s (%s)\n\n", result.Title, result.Link)
 		fmt.Println(result.Summary)
 
 		return nil

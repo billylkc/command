@@ -188,7 +188,7 @@ func GetWiki(query string) (Wiki, error) {
 	}
 	err = result.deriveSummary()
 	if err != nil {
-		return result, err
+		fmt.Println("Can not connect to gRPC server.")
 	}
 	return result, nil
 }
@@ -205,10 +205,11 @@ func (w *Wiki) deriveSummary() error {
 
 	keywords, err := extractKeywords(content)
 	if err != nil {
+		w.Summary = content
 		return err
 	}
 	for _, k := range keywords {
-		content = util.InsensitiveReplace(content, k)
+		content = util.InsensitiveReplace(content, k, true)
 	}
 	w.Summary = content
 	return nil
@@ -281,7 +282,6 @@ func tryWiki(q string) (Wiki, error) {
 			if strings.Contains(result.Content[0], "may also refer to:") {
 				return result, fmt.Errorf("(search in duck duck go)")
 			}
-
 		}
 	}
 	return result, nil
@@ -292,7 +292,7 @@ func extractKeywords(s string) ([]string, error) {
 	// TODO: check server connection first
 	// TODO: get from env
 	address := "localhost:50052"
-	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
+	conn, err := grpc.Dial(address, grpc.WithTimeout(2*time.Second), grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		return results, err
 	}
