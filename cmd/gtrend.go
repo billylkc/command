@@ -40,9 +40,7 @@ var gtrendCmd = &cobra.Command{
 			{Number: 2, AutoMerge: true},
 			{Number: 3, WidthMax: 80},
 		})
-		// t.SetColumnConfigs([]table.ColumnConfig{
-		//  {Number: 1, WidthMax: 64},
-		// })
+
 		t.AppendSeparator()
 		t.Style().Options.SeparateRows = true
 		t.Render()
