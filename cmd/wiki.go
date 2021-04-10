@@ -16,8 +16,8 @@ var wikiCmd = &cobra.Command{
 	Long:    `[w] Quick summary from the wiki page.`,
 	Aliases: []string{"w"},
 	Example: `
-  wiki logistic regression
-  w regression
+  command wiki logistic regression
+  command w regression
 `,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) == 0 {
