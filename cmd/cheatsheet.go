@@ -15,10 +15,10 @@ var cheatsheetCmd = &cobra.Command{
 	Use:     "cheatsheet",
 	Short:   "[c] Getting some cheatsheet from cht.sh",
 	Long:    `[c] Getting some cheatsheet from cht.sh`,
-	Aliases: []string{"c"},
+	Aliases: []string{"ch"},
 	Example: `
   command cheatsheet python dataframe
-  command c python dataframe
+  command ch python dataframe
 `,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) == 0 {

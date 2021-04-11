@@ -18,12 +18,11 @@ var hackernewsCmd = &cobra.Command{
 	Aliases: []string{"hn"},
 	Short:   "[hn] Hackernews.",
 	Long:    `[hn] Hackernews.`,
+	Example: `
+  command news hackernews
+  command n hn
+`,
 	RunE: func(cmd *cobra.Command, args []string) error {
-
-		type Article struct {
-			Date    string
-			Content string
-		}
 		var articles []Article
 
 		res, err := command.GetHackerNews(all)
