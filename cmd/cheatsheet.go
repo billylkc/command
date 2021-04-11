@@ -17,8 +17,8 @@ var cheatsheetCmd = &cobra.Command{
 	Long:    `[c] Getting some cheatsheet from cht.sh`,
 	Aliases: []string{"ch"},
 	Example: `
-  command cheatsheet python dataframe
-  command ch python dataframe
+  command utility cheatsheet python dataframe
+  command u ch python dataframe
 `,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) == 0 {
@@ -44,7 +44,7 @@ var cheatsheetCmd = &cobra.Command{
 }
 
 func init() {
-	rootCmd.AddCommand(cheatsheetCmd)
+	utilityCmd.AddCommand(cheatsheetCmd)
 }
 
 // shell output to bash

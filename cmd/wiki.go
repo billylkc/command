@@ -32,11 +32,10 @@ var wikiCmd = &cobra.Command{
 
 		fmt.Printf("%s (%s)\n\n", result.Title, result.Link)
 		fmt.Println(result.Summary)
-
 		return nil
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(wikiCmd)
+	utilityCmd.AddCommand(wikiCmd)
 }

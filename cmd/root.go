@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 
 	homedir "github.com/mitchellh/go-homedir"
@@ -66,3 +67,12 @@ func PrettyPrint(i interface{}) string {
 	s, _ := json.MarshalIndent(i, "", "\t")
 	return string(s)
 }
+
+type logger struct {
+	*logrus.Logger
+}
+
+func (log *logger) Critical(args ...interface{})                 { log.Error(args...) }
+func (log *logger) Criticalf(format string, args ...interface{}) { log.Errorf(format, args...) }
+func (log *logger) Notice(args ...interface{})                   { log.Info(args...) }
+func (log *logger) Noticef(format string, args ...interface{})   { log.Infof(format, args...) }
