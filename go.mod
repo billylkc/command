@@ -4,6 +4,7 @@ go 1.16
 
 require (
 	astuart.co/goq v1.0.0
+	github.com/PuerkitoBio/goquery v1.6.1 // indirect
 	github.com/billylkc/myutil v0.1.6
 	github.com/golang/protobuf v1.4.2
 	github.com/grokify/html-strip-tags-go v0.0.1

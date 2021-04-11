@@ -11,7 +11,11 @@ import (
 	"github.com/spf13/viper"
 )
 
-var cfgFile string
+var (
+	cfgFile  string
+	date     string
+	nrecords int
+)
 
 var rootCmd = &cobra.Command{
 	Use:     "command",
