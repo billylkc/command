@@ -67,7 +67,6 @@ func KDNuggets(d string, nrecords int) ([]KDRecord, error) {
 			)
 			title := s.Find("a").Text()
 			dateF := strings.ReplaceAll(s.Find("font").Text(), "- ", "")
-			fmt.Println(dateF)
 			date, _ := time.Parse("Jan 2, 2006", dateF)
 			link, _ := s.Find("a").Attr("href")
 			snippet := strings.TrimSpace(s.Find("div").Text())
