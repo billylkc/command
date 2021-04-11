@@ -20,7 +20,7 @@ var redditCmd = &cobra.Command{
   command n r wallstreetbets
 `,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		var articles []Article
+		var articles Articles
 		var s string
 		if len(args) > 0 {
 			s = strings.Join(args, " ")
@@ -44,13 +44,11 @@ var redditCmd = &cobra.Command{
 			articles = append(articles, a)
 		}
 
-		headers := []string{"Date", "Content"}
-		ignores := []string{""}
-		data := myutil.InterfaceSlice(articles)
-		err = myutil.PrintTable(data, headers, ignores, 1)
+		err = articles.PrintTable()
 		if err != nil {
 			return err
 		}
+
 		return nil
 	},
 }

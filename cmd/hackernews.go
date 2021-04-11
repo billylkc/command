@@ -6,7 +6,6 @@ import (
 	"github.com/billylkc/command/command"
 	"github.com/billylkc/myutil"
 
-	. "github.com/logrusorgru/aurora"
 	"github.com/spf13/cobra"
 )
 
@@ -23,7 +22,7 @@ var hackernewsCmd = &cobra.Command{
   command n hn
 `,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		var articles []Article
+		var articles Articles
 
 		res, err := command.GetHackerNews(all)
 		if err != nil {
@@ -33,19 +32,16 @@ var hackernewsCmd = &cobra.Command{
 		// Formatting
 		for _, r := range res {
 			var a Article
-			a.Date = r.Date
-			title := Sprintf(Yellow(r.Title))
-			link := Sprintf(Green(fmt.Sprintf("%s", r.Link)))
-			abstract := myutil.BreakLongParagraph(r.Abstract, 100, 0)
+			a.Date = r.Updated.Format("2006-01-02")
+			title := myutil.TextYellow(r.Title)
+			link := myutil.TextGreen(fmt.Sprintf("%s", r.Link))
+			abstract := myutil.BreakLongParagraph(r.Content, 100, 0)
 
 			a.Content = fmt.Sprintf("%s\n\n%s\n\n%s", title, link, abstract)
 			articles = append(articles, a)
 		}
 
-		headers := []string{"Date", "Content"}
-		ignores := []string{""}
-		data := myutil.InterfaceSlice(articles)
-		err = myutil.PrintTable(data, headers, ignores, 1)
+		err = articles.PrintTable()
 		if err != nil {
 			return err
 		}

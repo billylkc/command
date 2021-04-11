@@ -16,6 +16,7 @@ type RedditTopic struct {
 	Title   string
 	Content string
 	Link    string
+	Summary string
 }
 
 // Reddit reads the rss from the subreddit
