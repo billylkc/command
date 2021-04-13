@@ -5,7 +5,6 @@
 package command
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -13,12 +12,10 @@ import (
 	"net/http"
 	"regexp"
 	"strings"
-	"time"
 
 	"astuart.co/goq"
-	"github.com/billylkc/command/pb"
 	"github.com/billylkc/command/util"
-	"google.golang.org/grpc"
+	"github.com/billylkc/gtoolkits"
 )
 
 // Wiki as the result from wikipedia
@@ -203,7 +200,7 @@ func (w *Wiki) deriveSummary() error {
 		content = strings.Join(w.Content, "\n")
 	}
 
-	keywords, err := extractKeywords(content)
+	keywords, err := gtoolkits.GetKeywords(content, 20)
 	if err != nil {
 		w.Summary = content
 		return err
@@ -285,26 +282,4 @@ func tryWiki(q string) (Wiki, error) {
 		}
 	}
 	return result, nil
-}
-
-func extractKeywords(s string) ([]string, error) {
-	var results []string
-	// TODO: check server connection first
-	// TODO: get from env
-	address := "localhost:50052"
-	conn, err := grpc.Dial(address, grpc.WithTimeout(2*time.Second), grpc.WithInsecure(), grpc.WithBlock())
-	if err != nil {
-		return results, err
-	}
-	defer conn.Close()
-
-	c := pb.NewTextClient(conn)
-	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
-	defer cancel()
-	r, err := c.ExtractKeywords(ctx, &pb.Request{Text: s})
-	if err != nil {
-		return results, err
-	}
-	results = r.GetText()
-	return results, nil
 }
