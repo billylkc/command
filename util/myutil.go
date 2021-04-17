@@ -1,6 +1,8 @@
 package util
 
 import (
+	"bytes"
+	"os/exec"
 	"regexp"
 	"strings"
 
@@ -32,4 +34,16 @@ func InsensitiveReplace(s, search string, once bool) string {
 		output = pat.ReplaceAllString(s, replace)
 	}
 	return output
+}
+
+// Shell calls the shell command
+func Shell(command string) (error, string, string) {
+	const ShellToUse = "bash"
+	var stdout bytes.Buffer
+	var stderr bytes.Buffer
+	cmd := exec.Command(ShellToUse, "-c", command)
+	cmd.Stdout = &stdout
+	cmd.Stderr = &stderr
+	err := cmd.Run()
+	return err, stdout.String(), stderr.String()
 }
