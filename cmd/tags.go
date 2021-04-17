@@ -2,6 +2,8 @@ package cmd
 
 import (
 	"fmt"
+	"os"
+	"strings"
 
 	"github.com/billylkc/myutil"
 	"github.com/spf13/cobra"
@@ -22,7 +24,14 @@ var gitTagCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		fmt.Println(out)
+
+		fmt.Printf("out: %+v\n", out)
+		b := strings.Contains(out, "nothing to commit, working tree clean")
+		if !b { // Need commit
+			fmt.Errorf("Need to commit first. \n")
+			os.Exit(0)
+		}
+		fmt.Println("Continue")
 
 		return nil
 	},
