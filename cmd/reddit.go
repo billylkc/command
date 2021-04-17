@@ -38,7 +38,8 @@ var redditCmd = &cobra.Command{
 			a.Date = r.Updated.Format("2006-01-02")
 			title := myutil.TextYellow(myutil.BreakLongStr(r.Title, 100, 0))
 			link := myutil.TextGreen(fmt.Sprintf("%s", r.Link))
-			abstract := myutil.BreakLongParagraph(r.Content, 100, 0)
+			content := r.Content
+			abstract := myutil.BreakLongParagraph(content, 100, 0)
 
 			a.Content = fmt.Sprintf("%s\n\n%s\n\n%s", title, link, abstract)
 			articles = append(articles, a)

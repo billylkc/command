@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/billylkc/command/command"
-	"github.com/billylkc/gtoolkits"
 	"github.com/billylkc/myutil"
 	"github.com/spf13/cobra"
 )
@@ -35,7 +34,7 @@ var hackernewsCmd = &cobra.Command{
 			a.Date = r.Updated.Format("2006-01-02")
 			title := myutil.TextYellow(r.Title)
 			link := myutil.TextGreen(fmt.Sprintf("%s", r.Link))
-			content := gtoolkits.HighlightKeywords(r.Content, 10)
+			content := r.Content
 			abstract := myutil.BreakLongParagraph(content, 100, 0)
 
 			a.Content = fmt.Sprintf("%s\n\n%s\n\n%s", title, link, abstract)
