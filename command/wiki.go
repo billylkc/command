@@ -191,7 +191,7 @@ func GetWiki(query string) (Wiki, error) {
 }
 
 // deriveSummary will send request to gRPC server to extract the keywords
-// keywrods will be highlighted before print for readability
+// keywords will be highlighted before print for readability
 func (w *Wiki) deriveSummary() error {
 	var content string
 	if len(w.Content) >= 3 {
