@@ -27,7 +27,7 @@ var gitTagCmd = &cobra.Command{
 		fmt.Println("--------------")
 		fmt.Printf("out: %+v\n", out)
 		fmt.Println("--------------")
-		b := strings.Contains(out, "nothing to commit, working tree clean")
+		b := strings.ContainsAny(out, "nothing to commit, working tree clean")
 		if !b { // Need commit
 			fmt.Errorf("Need to commit first. \n")
 			os.Exit(0)
