@@ -40,10 +40,8 @@ var gitTagCmd = &cobra.Command{
 		if err != nil {
 			fmt.Println(err)
 		}
-		fmt.Println(out)
-		// res := strings.Split(out, "\n")
-		// current := res[len(res)-2] // current version
-		// fmt.Printf("Current version: %s\n", current)
+		current := out
+		fmt.Printf("Current version: %s\n", current)
 
 		// New tags
 		// version, err := incrementVersion(current)
