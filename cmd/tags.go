@@ -50,23 +50,22 @@ var gitTagCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		fmt.Println(version)
 
-		// // Tag and push to origin
-		// err, _, _ = myutil.Shell(fmt.Sprintf("git tag %s", version))
-		// if err != nil {
-		// 	return err
-		// }
-		// fmt.Printf("New version: %s\n", version)
+		// Tag and push to origin
+		err, _, _ = myutil.Shell(fmt.Sprintf("git tag %s", version))
+		if err != nil {
+			return err
+		}
+		fmt.Printf("New version: %s\n", version)
 
-		// err, out, _ = myutil.Shell(fmt.Sprintf("git push origin %s", version))
-		// if err != nil {
-		// 	return err
-		// }
+		err, out, _ = myutil.Shell(fmt.Sprintf("git push origin %s", version))
+		if err != nil {
+			return err
+		}
 
-		// fmt.Printf("Push to origin.")
-		// fmt.Println("")
-		// fmt.Println(out)
+		fmt.Printf("Push to origin.")
+		fmt.Println("")
+		fmt.Println(out)
 
 		return nil
 	},
