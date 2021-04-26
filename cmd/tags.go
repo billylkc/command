@@ -36,7 +36,7 @@ var gitTagCmd = &cobra.Command{
 		}
 
 		// Get current tags
-		err, out, _ = myutil.Shell(`git describe --tags $(git rev-list --tags --max-count=1)`)
+		err, out, _ = myutil.Shell(`git for-each-ref refs/tags --sort=-taggerdate --format='%(refname)' --count=1`)
 		if err != nil {
 			fmt.Println(err)
 		}
