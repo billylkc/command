@@ -36,35 +36,36 @@ var gitTagCmd = &cobra.Command{
 		}
 
 		// Get current tags
-		err, out, _ = myutil.Shell("git tag")
+		err, out, _ = myutil.Shell(`git describe --tags $(git rev-list --tags --max-count=1)`)
 		if err != nil {
 			fmt.Println(err)
 		}
-		res := strings.Split(out, "\n")
-		current := res[len(res)-2] // current version
-		fmt.Printf("Current version: %s\n", current)
+		fmt.Println(out)
+		// res := strings.Split(out, "\n")
+		// current := res[len(res)-2] // current version
+		// fmt.Printf("Current version: %s\n", current)
 
 		// New tags
-		version, err := incrementVersion(current)
-		if err != nil {
-			return err
-		}
+		// version, err := incrementVersion(current)
+		// if err != nil {
+		// 	return err
+		// }
 
-		// Tag and push to origin
-		err, _, _ = myutil.Shell(fmt.Sprintf("git tag %s", version))
-		if err != nil {
-			return err
-		}
-		fmt.Printf("New version: %s\n", version)
+		// // Tag and push to origin
+		// err, _, _ = myutil.Shell(fmt.Sprintf("git tag %s", version))
+		// if err != nil {
+		// 	return err
+		// }
+		// fmt.Printf("New version: %s\n", version)
 
-		err, out, _ = myutil.Shell(fmt.Sprintf("git push origin %s", version))
-		if err != nil {
-			return err
-		}
+		// err, out, _ = myutil.Shell(fmt.Sprintf("git push origin %s", version))
+		// if err != nil {
+		// 	return err
+		// }
 
-		fmt.Printf("Push to origin.")
-		fmt.Println("")
-		fmt.Println(out)
+		// fmt.Printf("Push to origin.")
+		// fmt.Println("")
+		// fmt.Println(out)
 
 		return nil
 	},
