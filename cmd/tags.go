@@ -40,14 +40,17 @@ var gitTagCmd = &cobra.Command{
 		if err != nil {
 			fmt.Println(err)
 		}
-		current := out
-		fmt.Printf("Current version: %s\n", current)
+		if out == "" {
+			return fmt.Errorf("Empty tags.\n")
+		}
+		current := strings.ReplaceAll(out, "refs/tags/", "")
 
 		// New tags
-		// version, err := incrementVersion(current)
-		// if err != nil {
-		// 	return err
-		// }
+		version, err := incrementVersion(current)
+		if err != nil {
+			return err
+		}
+		fmt.Println(version)
 
 		// // Tag and push to origin
 		// err, _, _ = myutil.Shell(fmt.Sprintf("git tag %s", version))
