@@ -1,7 +1,7 @@
 # command
 collection of random command line functions
 
-| Group   | Command      | Run                                    | Shortcut   | Demo   |
+| Group   | Command      | Long                                   | Shortcut   | Demo   |
 |---------|--------------|----------------------------------------|------------|--------|
 | News    | Google Trend | command news gtrend <br/> command n tr | cmd n tr   | [Here] |
 |         | Hacker News  | command news hackernews                | Hackernews | [Here] |
