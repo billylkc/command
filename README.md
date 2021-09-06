@@ -21,5 +21,10 @@ Use the following command at you own risk. It will download the executable to yo
 
 ```
 cd ~/bin
-wget
+wget https://github.com/billylkc/command/blob/master/bin/command?raw=true
 ```
+
+and call it with `command`
+
+# Demo
+(TBA)
