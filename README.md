@@ -1,5 +1,5 @@
 # command
-collection of random command line functions
+collection of random command line functions for me to check the news, updates from Data science blogs, twitter, etc..
 
 | Group   | Command           | Long                         | Shortcut | Remark                                                 |
 |---------|-------------------|------------------------------|----------|--------------------------------------------------------|
