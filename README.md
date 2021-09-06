@@ -12,7 +12,8 @@ collection of random command line functions
 | Utility | Cheat sheet  | command utility cheatsheet             | Cheatsheet | [Here] |
 |         | Strip HTML   | command utility stripHtml              |            | [Here] |
 |         |              |                                        |            |        |
-|---------|--------------|----------------------------------------|------------|--------|
+
+
 
 # Installation
 I would **NOT RECOMMEND** downloading any executable to your system directly. A better way would be compiling from the source code with your Go environment.
@@ -26,5 +27,7 @@ wget https://github.com/billylkc/command/blob/master/bin/command?raw=true
 
 and call it with `command`
 
+
+
 # Demo
-(TBA)
+![command](demo.gif)
