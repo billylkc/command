@@ -12,3 +12,14 @@ collection of random command line functions
 | Utility | Cheat sheet  | command utility cheatsheet             | Cheatsheet | [Here] |
 |         | Strip HTML   | command utility stripHtml              |            | [Here] |
 |         |              |                                        |            |        |
+|---------|--------------|----------------------------------------|------------|--------|
+
+# Installation
+I would **NOT RECOMMEND** downloading any executable to your system directly. A better way would be compiling from the source code with your Go environment.
+
+Use the following command at you own risk. It will download the executable to your binary directory
+
+```
+cd ~/bin
+wget
+```
