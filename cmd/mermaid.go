@@ -55,5 +55,5 @@ var mermaidCmd = &cobra.Command{
 func init() {
 	utilityCmd.AddCommand(mermaidCmd)
 	mermaidCmd.Flags().StringVarP(&inputFile, "input", "i", "input.mmd", "Input file in mermaid syntax format")
-	mermaidCmd.Flags().StringVarP(&outputFile, "output", "o", "output.html", "Output file in output format")
+	mermaidCmd.Flags().StringVarP(&outputFile, "output", "o", "result.html", "Output file in output format")
 }
