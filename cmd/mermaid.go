@@ -14,8 +14,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var inputFile string
-var outputFile string
+var (
+	mIn  string // mermaid input file, e.g. input.mmd (mermaid)
+	mOut string // mermaid output file e.g. result.html
+)
 
 // mermaidCmd represents the mermaid command
 var mermaidCmd = &cobra.Command{
@@ -30,13 +32,13 @@ var mermaidCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 
 		// Read file content from input file
-		b, err := ioutil.ReadFile(inputFile)
+		b, err := ioutil.ReadFile(mIn)
 		if err != nil {
 			return err
 		}
 
 		// output
-		f, err := os.OpenFile(outputFile, os.O_WRONLY|os.O_CREATE, 0644)
+		f, err := os.OpenFile(mOut, os.O_WRONLY|os.O_CREATE, 0644)
 		defer f.Close()
 		if err != nil {
 			return err
@@ -48,7 +50,7 @@ var mermaidCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
-		fmt.Printf("Output Mermaid file - %s\n", outputFile)
+		fmt.Printf("Output Mermaid file - %s\n", mOut)
 
 		return nil
 	},
@@ -56,6 +58,6 @@ var mermaidCmd = &cobra.Command{
 
 func init() {
 	utilityCmd.AddCommand(mermaidCmd)
-	mermaidCmd.Flags().StringVarP(&inputFile, "input", "i", "input.mmd", "Input file in mermaid syntax format")
-	mermaidCmd.Flags().StringVarP(&outputFile, "output", "o", "result.html", "Output file in output format")
+	mermaidCmd.Flags().StringVarP(&mIn, "input", "i", "input.mmd", "Input file in mermaid syntax format")
+	mermaidCmd.Flags().StringVarP(&mOut, "output", "o", "result.html", "Output file in output format")
 }
