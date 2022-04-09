@@ -7,8 +7,11 @@
   <div>
 
   {{ range . }}
-     {{ .Type }}
+  <b>{{ .Type }}</b>
+  <img src="{{ .Image }}" alt="">
+  <a href="{{ .URL }}">Here</a>
   {{ end }}
+  <hr>
 
   </div>
 
