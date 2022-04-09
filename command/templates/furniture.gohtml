@@ -8,8 +8,10 @@
 
   {{ range . }}
   <b>{{ .Type }}</b>
+  <br/>
   <img src="{{ .Image }}" alt="">
-  <a href="{{ .URL }}">Here</a>
+  <br/>
+  <a href="{{ .URL }}">{{ .Title }}</a>
   {{ end }}
   <hr>
 

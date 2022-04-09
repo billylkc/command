@@ -18,6 +18,7 @@ type MermaidExample struct {
 type Furniture struct {
 	Items []struct {
 		Type  string `toml:"type"`
+		Title string `toml:"title"`
 		Image string `toml:"image"`
 		URL   string `toml:"url"`
 	} `toml:"items"`
