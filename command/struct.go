@@ -5,3 +5,10 @@ package command
 type Mermaid struct {
 	Content string
 }
+
+type MermaidExample struct {
+	Examples []struct {
+		Type    string `toml:"type"`
+		Content string `toml:"content"`
+	} `toml:"example"`
+}
