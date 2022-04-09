@@ -6,6 +6,7 @@ package cmd
 
 import (
 	"bufio"
+	"fmt"
 	"io/ioutil"
 	"os"
 
@@ -47,6 +48,7 @@ var mermaidCmd = &cobra.Command{
 		if err != nil {
 			return err
 		}
+		fmt.Printf("Output Mermaid file - %s\n", outputFile)
 
 		return nil
 	},
