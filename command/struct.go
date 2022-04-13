@@ -16,10 +16,14 @@ type MermaidExample struct {
 
 // Furniture are the items from taobao
 type Furniture struct {
-	Items []struct {
-		Type  string `toml:"type"`
-		Title string `toml:"title"`
-		Image string `toml:"image"`
-		URL   string `toml:"url"`
-	} `toml:"items"`
+	Items []Item `toml:"items"`
+}
+
+type Item struct {
+	Type      string  `toml:"type"`
+	Price     float64 `toml:"price"`
+	Title     string  `toml:"title"`
+	Image     string  `toml:"image"`
+	URL       string  `toml:"url"`
+	Important bool    `toml:"important"`
 }

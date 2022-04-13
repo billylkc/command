@@ -14,7 +14,8 @@ import (
 )
 
 var (
-	fgOut string // furniture out file, e.g. input.toml
+	fgOut     string // furniture out file, e.g. input.toml
+	fgImpOnly bool   // Important furniture only, default false
 )
 
 // furnitureGenerateCmd represents the furnitureGenerate command
@@ -37,7 +38,7 @@ var furnitureGenerateCmd = &cobra.Command{
 		}
 		w := bufio.NewWriter(f)
 
-		err = command.GenerateFurnitureExample(w)
+		err = command.GenerateFurnitureExample(w, fgImpOnly)
 		if err != nil {
 			return err
 		}
@@ -49,4 +50,5 @@ var furnitureGenerateCmd = &cobra.Command{
 func init() {
 	furnitureCmd.AddCommand(furnitureGenerateCmd)
 	furnitureGenerateCmd.Flags().StringVarP(&fgOut, "output", "o", "input.toml", "Output file in toml format")
+	furnitureGenerateCmd.Flags().BoolVarP(&fgImpOnly, "impFlag", "i", false, "Important items only")
 }

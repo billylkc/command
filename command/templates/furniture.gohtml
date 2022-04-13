@@ -7,9 +7,11 @@
   <div>
 
   {{ range . }}
+
   <b>{{ .Type }}</b>
   <br/><br/>
-  <a href="{{ .URL }}">{{ .Title }}</a>
+  <a href="{{ .URL }}">{{ .Title }}</a> <br/>
+  Price: {{ .Price }} <br/><br/>
   <img src="{{ .Image }}" alt="">
   <br/>
   {{ end }}
