@@ -21,3 +21,8 @@
 input.*
 output.*
 result.*
+
+# Some specific files
+furniture.toml
+input.toml
+result.html

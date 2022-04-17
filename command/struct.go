@@ -20,10 +20,10 @@ type Furniture struct {
 }
 
 type Item struct {
-	Type      string  `toml:"type"`
-	Price     float64 `toml:"price"`
-	Title     string  `toml:"title"`
-	Image     string  `toml:"image"`
-	URL       string  `toml:"url"`
-	Important bool    `toml:"important"`
+	Type      string `toml:"type"`
+	Price     int    `toml:"price"`
+	Title     string `toml:"title"`
+	Image     string `toml:"image"`
+	URL       string `toml:"url"`
+	Important bool   `toml:"important"`
 }
