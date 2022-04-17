@@ -25,8 +25,8 @@ var furnitureGenerateCmd = &cobra.Command{
 	Long:    "[g] Generate sample input file for furniture command.",
 	Aliases: []string{"g"},
 	Example: `
-  command utility furniture generate --output input.toml
-  command u f g -o input.toml
+  command utility furniture generate --output furniture.toml
+  command u f g -o furniture.toml
 `,
 	RunE: func(cmd *cobra.Command, args []string) error {
 
@@ -49,6 +49,6 @@ var furnitureGenerateCmd = &cobra.Command{
 
 func init() {
 	furnitureCmd.AddCommand(furnitureGenerateCmd)
-	furnitureGenerateCmd.Flags().StringVarP(&fgOut, "output", "o", "input.toml", "Output file in toml format")
+	furnitureGenerateCmd.Flags().StringVarP(&fgOut, "output", "o", "furniture.toml", "Output file in toml format")
 	furnitureGenerateCmd.Flags().BoolVarP(&fgImpOnly, "impFlag", "i", false, "Important items only")
 }
