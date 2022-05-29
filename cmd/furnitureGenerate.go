@@ -26,7 +26,7 @@ var furnitureGenerateCmd = &cobra.Command{
 	Aliases: []string{"g"},
 	Example: `
   command utility furniture generate --output furniture.toml
-  command u f g -o furniture.toml
+  command u f g -o output/furniture.toml
 `,
 	RunE: func(cmd *cobra.Command, args []string) error {
 

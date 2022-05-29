@@ -27,7 +27,7 @@ var furnitureCmd = &cobra.Command{
 	Aliases: []string{"f"},
 	Example: `
   command utility furniture --input furniture.toml --output result.html
-  command u f -i furniture.toml -o result.html
+  command u f -i output/furniture.toml -o output/furniture.html
 `,
 
 	RunE: func(cmd *cobra.Command, args []string) error {

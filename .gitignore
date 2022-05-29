@@ -20,6 +20,7 @@
 # input output files
 input.*
 output.*
+output/*
 result.*
 
 # Some specific files
